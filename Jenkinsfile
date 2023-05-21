@@ -104,7 +104,7 @@ parallel(
             CONTAINER_REGISTRY="docker.local.pw10n.pw"
             CONTAINER_NAME="castle-ha" 
             IMAGE_NAME="$CONTAINER_REGISTRY/$CONTAINER_NAME" 
-            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSIOn-$ARCH" 
+            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-$ARCH" 
             /kaniko/executor --context `pwd` --destination "$IMAGE_VERSION_TAG" --digest-file=/shared-data/termination-log --build-arg CI_ENV=Jenkins --build-arg GIT_COMMIT=$GIT_COMMIT --build-arg GIT_BRANCH=$GIT_BRANCH --build-arg VERSION=$VERSION --cache=true
             '''
           }

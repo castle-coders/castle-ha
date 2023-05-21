@@ -45,9 +45,9 @@ parallel(
             sh '''#!/busybox/sh
             VERSION=`cat UPSTREAM_VERSION`
             CONTAINER_REGISTRY="docker.local.pw10n.pw"
-            CONTAINER_NAME="castle-ha" 
+            CONTAINER_NAME="home-assistant" 
             IMAGE_NAME="$CONTAINER_REGISTRY/$CONTAINER_NAME" 
-            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-$ARCH" 
+            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-castle-$ARCH" 
             /kaniko/executor --context `pwd` --destination "$IMAGE_VERSION_TAG" --digest-file=/shared-data/termination-log --build-arg CI_ENV=Jenkins --build-arg GIT_COMMIT=$GIT_COMMIT --build-arg GIT_BRANCH=$GIT_BRANCH --build-arg VERSION=$VERSION --cache=true
             '''
           }
@@ -102,9 +102,9 @@ parallel(
             sh '''#!/busybox/sh
             VERSION=`cat UPSTREAM_VERSION`
             CONTAINER_REGISTRY="docker.local.pw10n.pw"
-            CONTAINER_NAME="castle-ha" 
+            CONTAINER_NAME="home-assistant" 
             IMAGE_NAME="$CONTAINER_REGISTRY/$CONTAINER_NAME" 
-            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-$ARCH" 
+            IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-castle-$ARCH" 
             /kaniko/executor --context `pwd` --destination "$IMAGE_VERSION_TAG" --digest-file=/shared-data/termination-log --build-arg CI_ENV=Jenkins --build-arg GIT_COMMIT=$GIT_COMMIT --build-arg GIT_BRANCH=$GIT_BRANCH --build-arg VERSION=$VERSION --cache=true
             '''
           }
@@ -139,10 +139,10 @@ podTemplate(yaml: """
           set -x
           VERSION=`cat UPSTREAM_VERSION`
           CONTAINER_REGISTRY="docker.local.pw10n.pw"
-          CONTAINER_NAME="castle-ha" 
+          CONTAINER_NAME="home-assistant" 
           IMAGE_NAME="$CONTAINER_REGISTRY/$CONTAINER_NAME" 
-          IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION" 
-          IMAGE_VERSION_TEMPLATE="$IMAGE_NAME:$VERSION-ARCH" 
+          IMAGE_VERSION_TAG="$IMAGE_NAME:$VERSION-castle" 
+          IMAGE_VERSION_TEMPLATE="$IMAGE_NAME:$VERSION-castle-ARCH" 
           manifest-tool push from-args \
             --platforms linux/amd64,linux/arm64 \
             --template $IMAGE_VERSION_TEMPLATE \

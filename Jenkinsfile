@@ -130,6 +130,9 @@ podTemplate(yaml: """
   """
   ) {
     node(POD_LABEL) {
+      stage("checkout") {
+        checkout scm
+      }
       stage("publish manifest"){
         container(name:'manifest-tool', shell:'/bin/sh'){
           sh '''#!/bin/sh
